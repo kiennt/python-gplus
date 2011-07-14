@@ -22,6 +22,9 @@ class InputHandler(threading.Thread):
         while True:
             try:
                 cmd = raw_input("> ")
+                if cmd == "exit":
+                    print "Exit now"
+                    self.main.exit() 
                 if self.is_validate(cmd):
                     self.main.socket.send(cmd)
                 else:
@@ -59,6 +62,9 @@ class CrawlerAdminClient(threading.Thread):
         self.input_handler = InputHandler(self)
         self.net_handler = NetHandler(self)
     
+    def exit(self):
+        sys.exit(1)
+
     def run(self):
         try:
             self.socket.connect((cfg.ADMIN_HOST, cfg.ADMIN_PORT))

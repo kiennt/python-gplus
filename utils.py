@@ -51,13 +51,13 @@ class DatabaseUtils(object):
         print len(self.users.find({'vn':1}).distinct('uid'))
 
     def sort_friends_vn(self):
-        vnusers = self.users.find({'vn':1}).sort([('friends', DESCENDING)]).limit(10)
+        vnusers = self.users.find({'vn':1}).sort([('friends', DESCENDING)]).limit(50)
         for u in vnusers:
             print u['uid'], u['name'], u['friends'], u['followers']
         print 'Total: ', vnusers.count()
             
     def sort_followers_vn(self):
-        vnusers = self.users.find({'vn':1}).sort([('followers', DESCENDING)]).limit(10)
+        vnusers = self.users.find({'vn':1}).sort([('followers', DESCENDING)]).limit(50)
         for u in vnusers:
             print u['uid'], u['name'], u['friends'], u['followers']
         print 'Total: ', vnusers.count()

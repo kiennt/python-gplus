@@ -26,7 +26,7 @@ class GplusExtracter(object):
             return name
         except:
             print "Exception when get name of user:"
-            traceback.print_exc(file=sys.stdout)
+            #traceback.print_exc(file=sys.stdout)
             raise
 
     def get_number_of_friends(self, content):
@@ -58,7 +58,7 @@ class GplusExtracter(object):
             return str(self.followers)
         except:
             print "Exception when get number of followers:"
-            traceback.print_exc(file=sys.stdout)
+            #traceback.print_exc(file=sys.stdout)
             raise
 
     def get_sex_of_user(self, content):
@@ -73,7 +73,7 @@ class GplusExtracter(object):
             return "Other"    
         except:
             print "Exception when get sex of user:"
-            traceback.print_exc(file=sys.stdout)
+            #traceback.print_exc(file=sys.stdout)
             raise
 
 
@@ -115,7 +115,7 @@ class GplusExtracter(object):
             return msg
         except:
             print "Exception when get_user_info:" , self.uid, "with proxy:", self.proxy
-            traceback.print_exc(file=sys.stdout)
+            #traceback.print_exc(file=sys.stdout)
             raise        
 
     def parse(self, content):
@@ -170,7 +170,7 @@ class GplusExtracter(object):
             return arr
         except:
             print "Exception when get_list_user with proxy", self.proxy
-            traceback.print_exc(file=sys.stdout)
+            #traceback.print_exc(file=sys.stdout)
             raise
                 
     def get_user_friends(self):

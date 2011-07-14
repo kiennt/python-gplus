@@ -62,7 +62,7 @@ class Downloader(threading.Thread):
                 self.main.list_user_id.task_done()
             except:
                 print "Downloader", self.id, "exception"
-                traceback.print_exc(file=sys.stdout)
+                #traceback.print_exc(file=sys.stdout)
                 self.main.list_user_id.put(uid)
                 time.sleep(1)
                     
@@ -71,12 +71,18 @@ class CrawlerClient(object):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.list_user_id = Queue.Queue()
         self.list_proxies = ['184.72.4.242:80',
-                             #'184.106.229.70:8080',
-                             '184.22.116.40:3128',
-                             #'209.190.53.189:8080',
-                             '184.82.44.162:3128',
                              '184.22.240.161:3128',
-                             '184.22.240.160:3128',]
+                             '184.22.240.160:3128',
+                             '69.160.245.113:8888',
+                             '201.65.237.214:8080',
+                             '196.201.208.31:3128',
+                             '210.212.20.164:3128',
+                             '190.202.87.131:3128',
+                             '61.7.241.18:3128',
+                             '202.51.120.195:8080',
+                             '217.219.69.122:8080',
+                             '200.195.147.172:8080',
+                             '189.22.152.3:3128',]
         self.current_proxy = 0
         self.lock = threading.Condition()
         self.vd = vd()

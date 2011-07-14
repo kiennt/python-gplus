@@ -7,14 +7,17 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        subprocess.call(['python', '/home/gstats/crawler_server.py'])
+        cmd = "python /home/gstats/crawler_server.py >> /home/gstats/log/server"
+        subprocess.Popen(cmd, shell=True)
 
 class ClientThread(threading.Thread):
-    def __init__(self):
+    def __init__(self, i):
+        self.id = i
         threading.Thread.__init__(self)
 
     def run(self):
-        subprocess.call(['python', '/home/gstats/crawler_client.py'])
+        cmd = 'python /home/gstats/crawler_client.py >> /home/gstats/log/client0' + self.id
+        subprocess.Popen(cmd, shell=True)
 
 def main():
     server = ServerThread()
@@ -22,7 +25,7 @@ def main():
     time.sleep(2)
 
     for i in range(10):
-        client = ClientThread()
+        client = ClientThread(str(i))
         client.start()
 
 
